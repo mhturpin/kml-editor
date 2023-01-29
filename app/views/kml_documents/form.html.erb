@@ -1,0 +1,8 @@
+<%= form_with model: @kml_document do |form| %>
+  <div>
+  <%= form.file_field(:geojson, accept: '.geojson') %>
+  </div>
+  <div>
+  <%= form.submit %>
+  </div>
+<% end %>
