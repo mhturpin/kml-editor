@@ -3,7 +3,7 @@ class Coordinate < ApplicationRecord
 
   default_scope { order(:index) }
 
-  def self.create_from_geojson(geometry, coordinate, i=nil)
-    return self.create!(geometry: geometry, latitude: coordinate[1], longitude: coordinate[0], index: i)
+  def self.create_from_geojson(geometry, coordinate, index=nil)
+    return self.create!(geometry: geometry, latitude: coordinate[1], longitude: coordinate[0], index: index)
   end
 end
