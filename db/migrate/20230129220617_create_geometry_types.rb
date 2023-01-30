@@ -47,6 +47,7 @@ class CreateGeometryTypes < ActiveRecord::Migration[7.0]
     end
 
     create_table :coordinates do |t|
+      t.enum :geometry_type, enum_type: 'geometry', null: false
       t.bigint :geometry_id, null: false
       t.string :latitude, null: false
       t.string :longitude, null: false

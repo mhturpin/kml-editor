@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_220617) do
   create_enum "geometry", ["Point", "LineString", "LinearRing", "Polygon", "MultiGeometry"]
 
   create_table "coordinates", force: :cascade do |t|
+    t.enum "geometry_type", null: false, enum_type: "geometry"
     t.bigint "geometry_id", null: false
     t.string "latitude", null: false
     t.string "longitude", null: false

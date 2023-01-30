@@ -1,10 +1,10 @@
 class Point < ApplicationRecord
   has_one :placemark, as: :geometry
-  has_one :coordinate, foreign_key: 'geometry_id'
+  has_one :coordinate, as: :geometry
 
-  def self.create_with(latitude, longitude)
+  def self.create_from_geojson(geometry)
     point = self.create!()
-    point.coordinate = Coordinate.create!(geometry_id: point.id, latitude: latitude, longitude: longitude)
+    Coordinate.create_from_geojson(point, geometry[:coordinates])
     return point
   end
 end

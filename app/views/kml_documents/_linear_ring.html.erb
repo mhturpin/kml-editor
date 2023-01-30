@@ -1,0 +1,10 @@
+<ul>
+  <li>Type: LinearRing</li>
+  <li>Coordinates:
+    <br>
+    <% linear_ring.coordinates.each do |coordinate| %>
+      <%= render(partial: 'coordinate', locals: { coordinate: coordinate }) %>
+      <br>
+    <% end %>
+  </li>
+</ul>

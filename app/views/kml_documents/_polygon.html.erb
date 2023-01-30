@@ -1,0 +1,11 @@
+<ul>
+  <li>Type: Polygon</li>
+  <li>Outer Boundary: <%= render(partial: 'linear_ring', locals: { linear_ring: geometry.outer_boundary }) %></li>
+  <li>Inner Boundaries:
+    <ul>
+      <% geometry.inner_boundaries.each do |linear_ring| %>
+        <li><%= render(partial: 'linear_ring', locals: { linear_ring: linear_ring }) %></li>
+      <% end %>
+    </ul>
+  </li>
+</ul>

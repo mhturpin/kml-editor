@@ -1,3 +1,3 @@
 class LineString < ApplicationRecord
-  has_many :coordinates, foreign_key: 'geometry_id'
+  has_many :coordinates, as: :geometry
 end
