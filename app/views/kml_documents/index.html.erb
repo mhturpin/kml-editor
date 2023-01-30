@@ -1,6 +1,8 @@
 <h1>Kml Documents</h1>
-<% @kml_documents.each do |doc| %>
-  <%= link_to(doc.name, edit_kml_document_path(doc)) %>
-<% end %>
+<ul>
+  <% @kml_documents.each do |doc| %>
+    <li><%= link_to(doc.name, kml_document_path(doc)) %></li>
+  <% end %>
+</ul>
 
 <%= link_to('New KML Document', new_kml_document_path) %>

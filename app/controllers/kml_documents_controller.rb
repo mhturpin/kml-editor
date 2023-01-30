@@ -5,27 +5,21 @@ class KmlDocumentsController < ApplicationController
 
   def new
     @kml_document = KmlDocument.new
-    render :form
   end
 
   def create
-    geojson = params[:kml_document][:geojson]
-    data = JSON.parse(File.read(geojson.tempfile)).with_indifferent_access
+    geojson = params.dig(:kml_document, :geojson)
 
-    debugger
-
-    @kml_document = KmlDocument.new(name: geojson.original_filename)
-
-    if @kml_document.save
-      redirect_to kml_documents_path
+    if geojson.present?
+      KmlDocument.create_from_geojson(geojson)
+      redirect_to(kml_documents_path)
     else
-      render :new, status: :unprocessable_entity
+      render(:new, status: :unprocessable_entity)
     end
   end
 
   def edit
     @kml_document = KmlDocument.find_by(id: params[:id])
-    render :form
   end
 
   def show

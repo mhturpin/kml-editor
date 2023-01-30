@@ -1,0 +1,2 @@
+class MultiGeometry < ApplicationRecord
+end
