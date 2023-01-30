@@ -3,6 +3,8 @@ class Placemark < ApplicationRecord
 
   def self.create_from_geojson(feature)
     placemark = self.new
+    placemark.name = feature[:properties][:DisplayPlantName]
+    placemark.description = "<h1>Properties:</h1><ul>#{feature[:properties].map {|k, v| "<li>#{k}: #{v}</li>"}.join}</ul>"
 
     case feature[:geometry][:type]
     when 'Point'
