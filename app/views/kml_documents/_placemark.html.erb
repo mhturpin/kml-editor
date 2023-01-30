@@ -1,0 +1,6 @@
+<ul>
+  <li>Name: <%= placemark.name %></li>
+  <li>Description: <%= placemark.description %></li>
+  <li>Style Url: <%= placemark.style_url %></li>
+  <li>Geometry: <%= render(partial: 'geometry', locals: { geometry: placemark.geometry }) %></li>
+</ul>

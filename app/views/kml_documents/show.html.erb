@@ -1,6 +1,8 @@
-<h1>Kml Documents</h1>
-<% @kml_documents.each do |doc| %>
-  <%= link_to(doc.name, show_kml_document_path(doc)) %>
-<% end %>
+<h1>Kml Document</h1>
+<ul>
+  <% @kml_document.placemarks.each do |placemark| %>
+    <li>Placemark: <%= render(partial: 'placemark', locals: { placemark: placemark }) %></li>
+  <% end %>
+</ul>
 
-<%= link_to('New KML Document', new_kml_document_path) %>
+<%= link_to('Back', kml_documents_path) %>
